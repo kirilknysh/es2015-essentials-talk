@@ -134,8 +134,10 @@
 				</ul>
 			</section>
 			<section>
+				<h2>Features overview</h2>
+			</section>
+			<section>
 				<ul>
-					<li>const\let</li>
 					<li>template strings</li>
 					<li>enhanced object literals</li>
 					<li>destructuring</li>
@@ -148,6 +150,70 @@
 					<li>map + set + weakmap + weakset</li>
 					<li>Proxy</li>
 				</ul>
+			</section>
+			<section>
+				<section>
+					<h3>let / const</h3>
+					<p>block-scoped</p>
+					<pre class="fragment"><code data-trim data-noescape>
+for (let i = 0; i < count; i++) {
+  ...
+}
+//i is not defined here
+					</code></pre>
+					<pre class="fragment"><code data-trim data-noescape>
+if (value <= maxValue) {
+  let newValue = value * 0.1; 
+}
+//newValue is not defined here
+					</code></pre>
+				</section>
+				<section>
+					<h3>let / const</h3>
+					<p>constrained by TDZ semantics</p>
+					<pre><code data-trim data-noescape>
+function execute() {
+  console.log(value);
+  var value = 10;
+  console.log(value);
+  ...
+}
+					</code></pre>
+					<pre class="fragment"><code data-trim data-noescape>
+function execute() {
+  console.log(value); //Uncaught ReferenceError: value is not defined
+  let value = 10;
+  console.log(value);
+  ...
+}
+					</code></pre>
+					<pre class="fragment"><code data-trim data-noescape>
+function execute() {
+  let value = 10;
+  console.log(value); //10
+  ...
+}
+					</code></pre>
+				</section>
+				<section>
+					<h3>const</h3>
+					<p>single-assignment</p>
+					<pre class="fragment"><code data-trim data-noescape>
+function execute() {
+  const value = 10;
+  ...
+  value = 15; //Uncaught TypeError: Assignment to constant variable
+}
+					</code></pre>
+					<pre class="fragment"><code data-trim data-noescape>
+function execute() {
+  const value = { tax: 10, mult: 0.4 };
+  ...
+  value.tax = 15; //OK!
+}
+					</code></pre>
+				</section>
+
 			</section>
 		</div>
 	</div>

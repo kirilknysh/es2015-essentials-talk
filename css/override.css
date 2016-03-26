@@ -1,0 +1,45 @@
+.release-plan-section {
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.release-plan-section .release-plan-figure-container {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+.vis-timeline .vis-item.vis-line {
+	color: #42affa;
+}
+
+.vis-timeline .vis-item {
+	background: #fff;
+}
+
+.vis-timeline .vis-item.ECMAScript {
+	background: #fff785;
+}
+
+.vis-timeline .vis-item.ECMAScript.version-label {
+	font-size: 30px;
+	line-height: 30px;
+}
+
+.vis-timeline .vis-panel.vis-left {
+	font-weight: bold;
+}
+
+.vis-timeline .vis-panel.vis-left .vis-label {
+	color: #aaa;
+}
+
+.vis-timeline .vis-item.version-label {
+	font-size: 24px;
+	line-height: 24px;
+}
+
+.vis-timeline .vis-item.version-label .vis-item-content {
+	padding: 2px;
+}

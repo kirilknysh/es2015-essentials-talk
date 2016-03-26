@@ -138,7 +138,6 @@
 			</section>
 			<section>
 				<ul>
-					<li>enhanced object literals</li>
 					<li>destructuring</li>
 					<li>default + rest + spread</li>
 					<li>Promises</li>
@@ -239,6 +238,32 @@ Mult is ${getMult()};
 2 + 2 = ${2 + 2}`
 					</code></pre>					
 				</div>
+			</section>
+			<section>
+				<h3>Enhanced object literals</h3>
+				<pre class="fragment">ES5<code data-trim data-noescape>
+function createChannel(id) {
+  var channel = {
+    id: id,
+    toString: function() { return this.id; }
+  };
+  
+  channel[Constants.KEY_1] = "Value 1";
+  channel[getKey()] = "Value 2";
+  
+  return channel;
+}
+				</code></pre>
+				<pre class="fragment">ES2015<code data-trim data-noescape>
+function createChannel(id) {
+  return {
+    id,
+    toString() { return this.id + super.toString(); }, //id + [object Object]
+    [Constants.KEY_1]: "Value 1",
+    [getKey()]: "Value 2"
+  };
+}
+				</code></pre>
 
 			</section>
 		</div>

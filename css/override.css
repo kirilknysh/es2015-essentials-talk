@@ -43,3 +43,21 @@
 .vis-timeline .vis-item.version-label .vis-item-content {
 	padding: 2px;
 }
+
+
+.creds {
+	text-align: right;
+}
+
+.main-titles-container {
+	display: inline-block;
+	text-align: left;
+}
+
+.main-titles-container h1 {
+	font-size: 2em;
+}
+
+.main-titles-container .es-selector {
+	color: #bee4fd;
+}

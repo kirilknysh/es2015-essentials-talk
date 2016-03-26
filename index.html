@@ -138,7 +138,6 @@
 			</section>
 			<section>
 				<ul>
-					<li>template strings</li>
 					<li>enhanced object literals</li>
 					<li>destructuring</li>
 					<li>default + rest + spread</li>
@@ -213,6 +212,33 @@ function execute() {
 }
 					</code></pre>
 				</section>
+			</section>
+			<section>
+				<h3>Template strings(literals)</h3>
+				<div class="fragment">
+					<p>declared with `backticks`</p>
+					<pre ><code data-trim data-noescape>
+`I am template`
+					</code></pre>
+				</div>
+				<div class="fragment">
+					<p>can be multiline</p>
+					<pre><code data-trim data-noescape>
+`I am
+template`
+					</code></pre>					
+				</div>
+				<div class="fragment">
+					<p>allow interpolation</p>
+					<pre><code data-trim data-noescape>
+const value = 10;
+function getMult() { return 0.4; }
+
+`Value is ${value};
+Mult is ${getMult()};
+2 + 2 = ${2 + 2}`
+					</code></pre>					
+				</div>
 
 			</section>
 		</div>

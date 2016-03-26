@@ -61,3 +61,51 @@
 .main-titles-container .es-selector {
 	color: #bee4fd;
 }
+
+table.desktop-compat-table th {
+	width: 25%;
+	text-align: center;
+}
+
+.desktop-compat-table .browser-logo, .mobile-compat-table .browser-logo {
+	width: 70px;
+	height: 70px;
+	border: none;
+	padding: 10px;
+}
+
+table.mobile-compat-table th {
+	width: 50%;
+	text-align: center;
+}
+
+.compat-progress-container {
+	width: 100%;
+	height: 0.2em;
+	background: rgba(255, 255, 255, 0.12);
+}
+
+.compat-progress-container .compat-progress {
+	background: #42affa;
+	height: 100%;
+}
+
+.compat-progress-text-value {
+	text-align: center;
+}
+
+.compilers-compat-list {
+	width: 60%
+}
+
+.compilers-compat-list li {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.compilers-compat-list .compat-progress-container {
+	display: inline-block;
+	max-width: 40%;
+}

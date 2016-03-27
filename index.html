@@ -324,8 +324,29 @@ printChannel();
 				</section>
 			</section>
 			<section>
-				<h3>default + rest + spread</h3>
-				
+				<h3>spread + rest</h3>
+				<div class="fragment">
+					<p>spread</p>
+					<pre><code data-trim data-noescape>
+function getDistance(x1, y1, x2, y2) {
+  return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+}
+
+const point1 = [10, 5];
+const point2 = [12, 9];
+getDistance(...point1, ...point2);
+					</code></pre>
+				</div>
+				<div class="fragment">
+					<p>rest</p>
+					<pre><code data-trim data-noescape>
+function execute(fun, context, ...params) {
+  return fun.apply(context, params);
+}
+
+execute(Math.max, Math, 10, 20, 5); //20
+					</code></pre>
+				</div>
 			</section>
 			<section>
 				<section>

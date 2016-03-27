@@ -299,8 +299,62 @@ function createChannel(id) {
 				
 			</section>
 			<section>
-				<h3>Promises</h3>
-				
+				<section>
+					<h3>Promises</h3>
+					<pre class="fragment"><code data-trim data-noescape>
+const p = new Promise((resolve, reject) => {
+  //do some async work
+  //...
+  if (result) {
+    resolve(result);
+  } else {
+    reject(error);
+  }
+});
+					</code></pre>
+					<div class="fragment">
+						<p>follow <a href="https://promisesaplus.com/">Promises/A+</a> spec</p>
+						<pre><code data-trim data-noescape>
+p.then(
+  (result) => {
+    //handle success
+  },
+  (error) => {
+    //process error
+  }
+);
+						</code></pre>
+					</div>
+				</section>
+				<section>
+					<h3>Promises</h3>
+					<div>
+						<p>support chaining</p>
+						<pre><code data-trim data-noescape>
+fetchChannels()
+  .then((channels) => {
+    return fetchEvents(channels);
+  }).then((events) => {
+    return processEvents(events);
+  }).catch((error) => {
+    log.error(error); //catches Promise reject + exceptions
+  });
+						</code></pre>
+					</div>
+					<div class="fragment">
+						<p>static methods</p>
+						<pre><code data-trim data-noescape>
+//create resolved Promise
+Promise.resolve(value);
+//create rejected Promise
+Promise.reject(error);
+//wait for all Promises to be resolved or at least one rejected
+Promise.all([fetchChannels(), fetchProfile()]);
+//wait for the 1st resolved/rejected Promise
+Promise.race([fetchChannels1(), fetchChannels2()]);
+						</code></pre>
+					</div>
+				</section>
 			</section>
 			<section>
 				<h3>Generators</h3>

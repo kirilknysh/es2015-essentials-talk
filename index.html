@@ -279,8 +279,49 @@ function createChannel(id) {
 				</code></pre>
 			</section>
 			<section>
-				<h3>Destructuring</h3>
+				<section>
+					<h3>Destructuring</h3>
+					<pre class="fragment">ES5<code data-trim data-noescape>
+var id = channel.id;
+var num = channel.num;
+var url = channel.pictures[0] || 'default.png';
+					</code></pre>
+					<pre class="fragment">ES2015<code data-trim data-noescape>
+const { id, num, pictures: [url='default.png'] } = channel;
+					</code></pre>
+					<div class="fragment">
+						<p>works with arrays</p>
+						<pre><code data-trim data-noescape>
+const [zero, , two] = [0, 1, 2, 3, 4];
+console.log(zero); //0
+console.log(two); //2
+						</code></pre>
+					</div>
+					<div class="fragment">
+						<p>swap values</p>
+						<pre><code data-trim data-noescape>
+[left, right] = [right, left];
+						</code></pre>
+					</div>
+				</section>
+				<section>
+					<h3>Destructuring</h3>
+					<p>in function params</p>
+					<pre class="fragment"><code data-trim data-noescape>
+function printChannel({ id, num }) {
+  console.log(`ID=${id}, NUM=${num}`);
+}
 
+printChannel(channel);
+					</code></pre>
+					<pre class="fragment"><code data-trim data-noescape>
+function printChannel({ id='', num=0 } = {}) {
+  console.log(`ID=${id}, NUM=${num}`); //ID=, NUM=0
+}
+
+printChannel();
+					</code></pre>
+				</section>
 			</section>
 			<section>
 				<h3>default + rest + spread</h3>

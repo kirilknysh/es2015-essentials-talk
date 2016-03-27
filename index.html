@@ -411,8 +411,48 @@ function mapChannels(channels) {
 				</section>
 			</section>
 			<section>
-				<h3>Classes</h3>
-				
+				<section>
+					<h3>Classes</h3>
+					<pre><code data-trim data-noescape>
+class Animal {
+  constructor(name, color) {
+    this.name = name;
+    this.color = color;
+  }
+
+  //static function
+  static className() {
+    return 'Animal';
+  }
+
+  //getter property
+  get stringified() {
+    return `${this.name} - ${this.color}`;
+  }
+}
+					</code></pre>
+				</section>
+				<section>
+					<h3>Classes</h3>
+					<p>inheritance</p>
+					<pre><code data-trim data-noescape>
+class Dog extends Animal {
+  constructor(name, color, birthDay) {
+    super(name, color);
+
+    this.birthDay = birthDay;
+  }
+
+  static className() {
+    return 'Dog';
+  }
+
+  get stringified() {
+    return `${super.stringified} : ${this.birthDay}`;
+  }
+}
+					</code></pre>
+				</section>				
 			</section>
 			<section>
 				<h3>Modules</h3>

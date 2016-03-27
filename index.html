@@ -521,8 +521,77 @@ Promise.race([fetchChannels1(), fetchChannels2()]);
 				
 			</section>
 			<section>
-				<h3>map + set + weakmap + weakset</h3>
-				
+				<section>
+					<h3>Map</h3>
+						<pre class="fragment"><code data-trim data-noescape>
+const requestParams = { w: 300, h: 200 };
+const response = fetch(requestParams);
+
+const map = new Map([ ['key-1', 'value-1'], [requestParams, response] ]);
+
+map.set('key-2', 'value-2');
+map.get(requestParams) === response;
+map.delete('key-1');
+map.has('key-1') === false;
+						</code></pre>
+						<div class="fragment">
+							<p>iterate</p>
+							<pre><code data-trim data-noescape>
+map.forEach((value, key) => { ... });
+for (let [key, value] of map) { ... }
+Array.from(map).forEach(([key, value], index) => { ... });
+_.forEachRight([...map], ([key, value], index) => { ... });
+							</code></pre>
+						</div>
+				</section>
+				<section>
+					<h3>WeakMap</h3>
+					<pre class="fragment"><code data-trim data-noescape>
+const cache = new WeakMap();
+
+cache.set(channel, getMetaData(channel));
+cache.get(channel);
+					</code></pre>
+					<ul class="fragment">similar to Map but:
+						<li class="fragment">weak references to keys</li>
+						<li class="fragment">keys must be reference types</li>
+						<li class="fragment">not iterable</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Set</h3>
+					<pre class="fragment"><code data-trim data-noescape>
+const set = new Set([1, 2, 3]);
+
+set.size; //3
+set.add(2);
+set.size; //3
+set.has(1) === true;
+					</code></pre>
+					<div class="fragment">
+						<p>iterate</p>
+						<pre><code data-trim data-noescape>
+set.forEach((value) => { ... });
+for (let value of set) { ... }
+Array.from(set).forEach((value, index) => { ... });
+_.forEachRight([...set], (value, index) => { ... });
+						</code></pre>
+					</div>
+				</section>
+				<section>
+					<h3>WeakSet</h3>
+					<pre class="fragment"><code data-trim data-noescape>
+const cache = new WeakSet();
+
+cache.add(channel);
+cache.has(channel) === true;
+					</code></pre>
+					<ul class="fragment">similar to Set but:
+						<li class="fragment">weak references to values</li>
+						<li class="fragment">values must be reference types</li>
+						<li class="fragment">not iterable</li>
+					</ul>
+				</section>
 			</section>
 			<section>
 				<h3>Proxy</h3>

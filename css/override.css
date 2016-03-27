@@ -113,3 +113,9 @@ table.mobile-compat-table th {
 .arrow-fun-names-container {
 	display: flex;
 }
+
+.proxies-traps-list .example {
+	vertical-align: middle;
+	margin-left: 15px;
+	color: #bee4fd;
+}

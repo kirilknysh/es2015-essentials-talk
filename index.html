@@ -594,8 +594,62 @@ cache.has(channel) === true;
 				</section>
 			</section>
 			<section>
-				<h3>Proxy</h3>
-				
+				<section>
+					<h3>Proxies</h3>
+					<p>useful for interception, logging/profiling, data mocks, etc</p>
+					<pre class="fragment"><code data-trim data-noescape>
+const channel = { id: 'mtv', num: 12 };
+const handler = {
+  get: (receiver, name) => {
+    if (name === 'num') {
+      return `${receiver.id} - ${receiver.num}`;
+    }
+
+    return receiver[name];
+  }
+};
+
+const prox = new Proxy(channel, handler);
+
+prox.id === 'mtv';
+prox.num === 'mtv - 12';
+					</code></pre>
+				</section>
+				<section>
+					<h3>Proxies</h3>
+					<p>freeze objects</p>
+					<pre class="fragment"><code data-trim data-noescape>
+const channel = { id: 'mtv', num: 12 };
+
+function preventChange() { throw new Error('Object is frozen'); }
+const handler = {
+  set: preventChange,
+  defineProperty: preventChange,
+  deleteProperty: preventChange,
+  preventExtensions: preventChange,
+  setPrototypeOf: preventChange
+};
+
+const prox = new Proxy(channel, handler);
+
+prox.id = 'bbc'; //Uncaught Error: Object is frozen
+					</code></pre>
+				</section>
+				<section>
+					<h3>Proxies</h3>
+					<ul class="proxies-traps-list">traps
+						<li>get<small class="example">proxy.prop, proxy['prop']</small></li>
+						<li>set<small class="example">proxy.prop = value, proxy['prop'] = value</small></li>
+						<li>has<small class="example"><u>in</u> operator</small></li>
+						<li>deleteProperty<small class="example"><u>delete</u> operator</small></li>
+						<li>apply<small class="example">function calls</small></li>
+						<li>construct<small class="example"><u>new</u> operator</small></li>
+						<li>defineProperty<small class="example">Object.defineProperty, declarative alternatives</small></li>
+						<li>enumerate<small class="example">for..in loops</small></li>
+						<li>ownKeys<small class="example">Object.keys and related methods</small></li>
+						<li>...</li>
+					</ul>
+				</section>
 			</section>
 			<section>
 				<video controls>

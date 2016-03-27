@@ -287,8 +287,66 @@ function createChannel(id) {
 				
 			</section>
 			<section>
-				<h3>Fat-arrow functions</h3>
-				
+				<section>
+					<h3>Fat-arrow functions</h3>
+					<pre class="fragment"><code data-trim data-noescape>
+const fetchChannels = (startIndex, count) => {
+  return CHANNELS.splice(startIndex, count);
+}
+					</code></pre>
+					<div class="fragment">
+						<p>shorthands</p>
+						<pre><code data-trim data-noescape>
+//no parenthesis for params, implicit return
+channels.map(channel => channel.id);
+
+//to return an object implicitly, wrap it in parenthesis
+channels.map(channel => ({
+  channelId: channel.id,
+  poster: channel.pictures[0]
+}));
+
+//2 and more params
+channels.map((channel, index) => {
+  const poster = channel.pictures[0] + `?index=${index}`;
+
+  return { channelId: channel.id, poster };
+});
+						</code></pre>
+					</div>
+				</section>
+				<section>
+					<h3>Fat-arrow functions</h3>
+					<div class="fragment">
+						<p>are bound to their lexical scope</p>
+						<pre><code data-trim data-noescape>
+const channel = {
+  pictures: ['https://...', 'https://...'],
+  size: { w: '300', h: '200' },
+  printPicturesUrl() { 
+    this.pictures.forEach((url) => {
+      console.log(`${url}?w=${this.size.w}&h=${this.size.h}`);
+    });
+  }
+}
+						</code></pre>
+					</div>
+					<div class="fragment">
+						<p>don't have names, but</p>
+						<div class="arrow-fun-names-container">
+							<pre><code data-trim data-noescape>
+function mapChannels(channels) {
+  return channels.reduce((result, channel) => {
+    channel.pictures.forEach((picture) => {
+      //...
+    });
+  }, []);
+}
+							</code></pre>
+							<img src="./img/arrow-fun-names.png" />
+						</div>
+					</div>
+				</section>
 			</section>
 			<section>
 				<h3>Classes</h3>

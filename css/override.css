@@ -109,3 +109,7 @@ table.mobile-compat-table th {
 	display: inline-block;
 	max-width: 40%;
 }
+
+.arrow-fun-names-container {
+	display: flex;
+}

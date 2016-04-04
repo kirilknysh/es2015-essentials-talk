@@ -455,8 +455,74 @@ class Dog extends Animal {
 				</section>				
 			</section>
 			<section>
-				<h3>Modules</h3>
-				
+				<section>
+					<h3>Modules</h3>
+					<p class="fragment">files that export an API</p>
+					<p class="fragment">with strict mode by default</p>
+				</section>
+				<section>
+					<h3>Modules</h3>
+					<p>exports</p>
+					<pre class="fragment">default export<code data-trim data-noescape>
+export default function(channel) {
+  return channel && channel.logo || null;
+}
+					</code></pre>
+					<pre class="fragment">named export<code data-trim data-noescape>
+export const LOGO_KEY = 'channel-logo-key-1';
+					</code></pre>
+					<pre class="fragment">multiple exports<code data-trim data-noescape>
+function getName(channel) { return channel && channel.name || ''; }
+const LOGO_KEY = 'channel-logo-key-1';
+
+export { getName, LOGO_KEY };
+
+export default function(channel) {
+  return channel && channel.logo || null;
+}
+					</code></pre>
+				</section>
+				<section>
+					<h3>Modules</h3>
+					<p>imports</p>
+					<pre class="fragment">load module<code data-trim data-noescape>
+import 'channels-helper';
+					</code></pre>
+					<pre class="fragment">import default as<code data-trim data-noescape>
+export default function(channel) {
+  return channel && channel.logo || null;
+}
+
+import getChannelLogo from 'channels-helper';
+					</code></pre>
+					<pre class="fragment">import named exports<code data-trim data-noescape>
+export const LOGO_KEY = 'channel-logo-key-1';
+
+import { LOGO_KEY } from 'channels-helper';
+import { LOGO_KEY as channelLogoKey } from 'channels-helper';
+					</code></pre>
+				</section>
+				<section>
+					<h3>Modules</h3>
+					<p>imports</p>
+					<pre class="fragment">mixed import<code data-trim data-noescape>
+function getName(channel) { return channel && channel.name || ''; }
+const LOGO_KEY = 'channel-logo-key-1';
+export { getName, LOGO_KEY };
+export default function(channel) {
+  return channel && channel.logo || null;
+}
+
+import getChannelLogo, { getName as getChannelName } from 'channels-helper';
+					</code></pre>
+					<pre class="fragment">import namespace<code data-trim data-noescape>
+function getName(channel) { return channel && channel.name || ''; }
+const LOGO_KEY = 'channel-logo-key-1';
+export { getName, LOGO_KEY };
+
+import * as ChannelsHelper from 'channels-helper';
+					</code></pre>
+				</section>
 			</section>
 			<section>
 				<section>

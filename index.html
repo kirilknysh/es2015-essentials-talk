@@ -583,8 +583,62 @@ Promise.race([fetchChannels1(), fetchChannels2()]);
 				</section>
 			</section>
 			<section>
-				<h3>Generators</h3>
-				
+				<section>
+					<h3>Iterators</h3>
+					<p>objects that know how to access items from a collection</p>
+					<p>implement the <b>@@iterator</b> method (property with a <b>Symbol.iterator</b> key)</p>
+					<pre class="fragment"><code data-trim data-noescape>
+const channels = {};
+channels[Symbol.iterator] = function* () {
+  yield 'BBC';
+  yield 'MTV';
+  yield 'Fashion TV';
+}
+
+[...channels]; //['BBC', 'MTV', 'Fashion TV']
+for (let channel of channels) { console.log(channel); }
+//BBC
+//MTV
+//Fashion TV
+					</code></pre>
+				</section>
+				<section>
+					<h3>Generators</h3>
+					<p>special type of functions that work as a factory for iterators</p>
+					<pre class="fragment"><code data-trim data-noescape>
+function* getChannelsIterator() {
+  yield* ['BBC', 'MTV', 'Fashion TV'];
+}
+
+const channels = getChannelsIterator();
+
+channels.next(); //{value: "BBC", done: false}
+channels.next(); //{value: "MTV", done: false}
+channels.next(); //{value: "Fashion TV", done: false}
+channels.next(); //{value: undefined, done: true}
+					</code></pre>
+				</section>
+				<section>
+					<h3>Generators</h3>
+					<p>internal state</p>
+					<pre class="fragment"><code data-trim data-noescape>
+function* getUniqId() {
+  let current = 0;
+
+  while (true) {
+    let reset = yield current;
+    current = reset ? 0 : ++current;
+  }
+}
+
+const generator = getUniqId();
+generator.next(); //{value: 0, done: false}
+generator.next(); //{value: 1, done: false}
+generator.next(); //{value: 2, done: false}
+generator.next(true); //{value: 0, done: false}
+generator.next(); //{value: 1, done: false}
+					</code></pre>
+				</section>
 			</section>
 			<section>
 				<section>
